@@ -1,0 +1,31 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-color: #333301;
+}
+
+.gameBox{
+    background: #FFFF52;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    width : 31vw;
+    height: 31vw;
+    border: 1px solid red;
+    align-items: center;
+}
+
+.inputBox{
+    flex: 1 0 30%; 
+    background:red;
+    text-align: center;
+    vertical-align: middle;
+    width : 9.99vw;
+    height: 9.99vw;
+    border : 2px solid black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+
+}
