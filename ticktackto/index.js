@@ -51,6 +51,7 @@ function takeInput(e){
         endGame = checkIfGameEnds(text);
         console.log(endGame);
         if(endGame){
+            queryBox.forEach( e => e.removeEventListener("click",takeInput));
             const event = new Event("WinEvent");
             document.dispatchEvent(event);
         }
