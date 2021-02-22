@@ -1,10 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Zurez</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <title>Maruti Demo</title>
+    <style>
+        .container { 
+            height: 600px;
+           
+            position: relative;
+            border: 3px solid green; 
+    }
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+button{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    box-sizing: border-box;
+  }
+
+  button[slot="hotspot-hand"]{
+    --min-hotspot-opacity: 0;
+    background-color: red;
+  }
+
+  button[slot="hotspot-foot"]:not([data-visible]) {
+    background-color: transparent;
+    border: 3px solid blue;
+  }
+
+  #annotation{
+    background-color: #888888;
+    position: absolute;
+    transform: translate(10px, 10px);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100px;
+  }
+  body{
+      color: red !important;
+  }
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
+    </style>
 </head>
 <body>
-Follow my blog at 
- <a href="http://www.zurez.xyz">N00b's Blog </a>
+    <div class="container">
+        <div class="center">
+            <model-viewer src="models/scene.glb"  auto-rotate camera-controls
+            poster="./spacesuit.jpg" style="height: 600px; width: 400px">
+            <button slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1"></button>
+            
+            <button slot="hotspot-foot" data-position="0.16 0.1 0.17" data-normal="-0.07 0.97 0.23" data-visibility-attribute="visible"></button>
+            <div id="annotation" onclick="showInfo()">Click for Info</div>
+          </model-viewer>
+        </div>
+        
+        <div class="center" style="display:none;margin-bottom: 0%;" id="info">
+            This is a nut bolt. It is a good nut bolt. Refresh page to make this message disappear  
+        </div>
+    </div>
+    
+   
 </body>
+<script>
+    function showInfo(){
+        const i = document.getElementById('info');
+        if( i ){
+            i.style.display = 'block'
+        }
+    }
+</script>
 </html>
